@@ -13,3 +13,10 @@ const Vme = {
 }
 
 export default Vme;
+
+export {
+  VmeForm,
+  VmeInput,
+  VmeSelect,
+  VmeTextarea,
+}
