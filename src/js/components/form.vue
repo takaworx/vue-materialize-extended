@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" :autocomplete="autocomplete">
         <fieldset :disabled="onTransit">
             <slot></slot>
         </fieldset>
@@ -9,6 +9,7 @@
 <script>
 export default {
     props: [
+        'autocomplete',
         'params',
     ],
     methods: {

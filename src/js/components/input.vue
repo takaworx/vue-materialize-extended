@@ -3,13 +3,18 @@
         <input v-model="model"
             :id="uid"
             :type="type"
+            :min="min"
+            :max="max"
+            :pattern="pattern"
             :placeholder="placeholder"
             :autocomplete="autocomplete"
             :tabindex="tabindex"
+            :readonly="readonly"
             :maxlength="maxlength"
             :autofocus="autofocus"
             :disabled="disabled"
-            @focus="onInputFocus" />
+            @focus="onInputFocus"
+            @blur="onInputBlur" />
         <label :for="uid" :class="{ 'active': isLabelActive }">{{ label }}</label>
     </div>
 </template>
@@ -19,10 +24,14 @@ export default {
     props: [
         'type',
         'uid',
+        'min',
+        'max',
         'label',
         'value',
+        'pattern',
         'disabled',
         'tabindex',
+        'readonly',
         'maxlength',
         'autofocus',
         'placeholder',
@@ -48,6 +57,9 @@ export default {
     methods: {
         onInputFocus(e) {
             this.$emit('focus', e);
+        },
+        onInputBlur(e) {
+            this.$emit('blur', e);
         }
     },
     data() {
