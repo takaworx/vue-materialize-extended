@@ -26,10 +26,7 @@ export default {
       }
   },
   mounted() {
-    document.addEventListener('DOMContentLoaded', () => {
-      let elems = document.getElementById('searchmodal')
-      this.modal = M.Modal.init(elems, { dismissible: false })
-    })
+    this.modal = M.Modal.init(document.getElementById('searchmodal'), { dismissible: false })
   },
   watch: {
     open(newval, oldval) {

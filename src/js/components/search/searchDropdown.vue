@@ -16,11 +16,9 @@ export default {
   mixins: [UseragentMixin],
   mounted() {
     if(!this.isMobile) {
-        document.addEventListener('DOMContentLoaded', () => {
-            const triggerElement = document.getElementById('triggerbox')
-            triggerElement.dataset.target = 'dropdown1'
-            this.dropdown = M.Dropdown.init(triggerElement)
-        })
+        const triggerElement = document.getElementById('triggerbox')
+        triggerElement.dataset.target = 'dropdown1'
+        this.dropdown = M.Dropdown.init(triggerElement)
     }
   },
   props: ['options'],
