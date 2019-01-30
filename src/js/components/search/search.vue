@@ -64,6 +64,11 @@ export default {
             this.confirmedSelectedValue = this.unconfirmedSelectedValue
         }
     },
+    watch: {
+        confirmedSelectedValue(val) {
+            this.$emit('input', val)
+        }
+    },
     mounted() {
         this.confirmedSelectedValue = this.selected
     }
