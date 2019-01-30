@@ -28,17 +28,12 @@
   "homepage": "https://github.com/takaworx/vue-materialize-extended#readme",
   "devDependencies": {
     "babel-preset-stage-2": "^6.24.1",
-    "babel-preset-vue-app": "^2.0.0",
     "laravel-mix": "^2.1.11",
     "vue": "^2.5.17"
   },
   "dependencies": {
     "autosize": "^4.0.2",
+    "lodash": "^4.17.11",
     "materialize-extended": "file:~/sites/unified/materialize-extended"
-  },
-  "babel": {
-    "presets": [
-      "vue-app"
-    ]
   }
 }

@@ -1,12 +1,12 @@
 <template>
     <div class="input-field box dark">
         <div id="triggerbox" class="input-field-select" @click="onClick">
-            <label for="input-field-select search-field-label" >
-                {{ ((options && options.find(o => o.value == confirmedSelectedValue)) && options.find(o => o.value == confirmedSelectedValue).name) 
-                || label }}
-            </label>
+            <img v-if="confirmedSelectedValue && options && options.find(o => o.value == confirmedSelectedValue)" :src="options.find(o => o.value == confirmedSelectedValue).flag" class="selected-flag" />
+            {{ ((options && options.find(o => o.value == confirmedSelectedValue)) && options.find(o => o.value == confirmedSelectedValue).text) 
+            || label }}
         </div>
-        <SearchDropdown :options="options" @onChange="onSelectedDropdownOptionChange"/>
+        <label for="triggerbox" class="search-label active">{{ label }}</label>
+        <SearchDropdown :options="options" @onChange="onSelectedDropdownOptionChange" />
         <SearchModal
             :title="title"
             :open="modalOpen"
@@ -16,7 +16,7 @@
                 :options="options"
                 @onChange="onSelectedOptionChange"
                 name="search"
-                :selected="1" />
+                :selected="selected" />
         </SearchModal>
     </div>
 </template>
@@ -63,6 +63,9 @@ export default {
         onModalConfirm() {
             this.confirmedSelectedValue = this.unconfirmedSelectedValue
         }
+    },
+    mounted() {
+        this.confirmedSelectedValue = this.selected
     }
 }
 </script>
@@ -73,5 +76,13 @@ export default {
 }
 .input-field-select label {
     font-size: 16px;
+}
+.selected-flag {
+  line-height: 56px;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 33%;
+  margin-right: 4px;
 }
 </style>

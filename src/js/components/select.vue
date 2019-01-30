@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { findIndex } from 'lodash'
+
 export default {
     props: [
         'uid',
@@ -29,7 +31,7 @@ export default {
     },
     computed: {
         noMatchFound() {
-            return _.findIndex(this.options, {
+            return findIndex(this.options, {
                 value: this.model
             }) == -1;
         }

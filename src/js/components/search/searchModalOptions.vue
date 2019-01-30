@@ -10,8 +10,8 @@
           v-model="selectedOption"
         />
         <span class="align-left">
-          <i class="material-icons">flag</i>
-          {{ option.name }}
+          <img :src="option.flag" class="selected-flag" />
+          {{ option.text }}
         </span>
       </label>
     </li>
@@ -37,5 +37,13 @@ export default {
 <style scoped>
 .align-left {
   text-align: left;
+}
+.selected-flag {
+  line-height: 56px;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 10%;
+  margin-right: 4px;
 }
 </style>
