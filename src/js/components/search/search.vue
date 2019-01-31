@@ -6,7 +6,7 @@
             || label }}
         </div>
         <label for="triggerbox" class="search-label active">{{ label }}</label>
-        <SearchDropdown :options="clonedOptions" @onChange="onSelectedDropdownOptionChange" />
+        <div id="search_dropdown"><SearchDropdown :options="clonedOptions" @onChange="onSelectedDropdownOptionChange" /></div>
         <SearchModal
             :title="title"
             :open="modalOpen"
@@ -41,7 +41,7 @@ export default {
             unconfirmedSelectedValue: null,
             modalOpen: false,
             search: null,
-            clonedOptions: null,
+            clonedOptions: [],
         }
     },
     props: [
