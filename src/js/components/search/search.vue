@@ -67,7 +67,7 @@ export default {
             this.confirmedSelectedValue = this.unconfirmedSelectedValue
         },
         countrySearch(query) {
-            this.clonedOptions =  this.options.filter(o => this.testMatch(o['text'], query))
+            this.clonedOptions =  this.options.filter(o => this.testMatch(o['text'], query) || this.testMatch(o['country_name'], query))
         },
         testMatch: function (str1, str2) {
             var regex;
