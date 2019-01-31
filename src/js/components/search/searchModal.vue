@@ -47,7 +47,43 @@ export default {
     modalConfirm() {
       this.$emit('onModalConfirm', true)
       this.modalClose()
-    }
+    },
+    countrySearch(query) {
+        var vm = this;
+
+        return new Promise(function (resolve, reject) {
+            var results = _.filter(vm.countries, function (o) {
+                return vm.testMatch(o['name'], query) || vm.testMatch(o['callingCodes'][0], query);
+            });
+
+            if (results !== null) {
+                resolve(results);
+            } else {
+                reject(results);
+            }
+        });
+
+    },
+    testMatch: function (str1, str2) {
+        var regex;
+
+        switch (this.position) {
+            case 'start':
+                regex = '^' + str2 + '.*$';
+                break;
+            case 'end':
+                regex = '^.*' + str2 + '$';
+                break;
+            default:
+            case 'any':
+                regex = '^.*' + str2 + '.*$';
+                break;
+        }
+
+        var testObj = new RegExp(regex, 'i');
+
+        return testObj.test(str1);
+    },
   }
 }
 </script>

@@ -6,14 +6,15 @@
             || label }}
         </div>
         <label for="triggerbox" class="search-label active">{{ label }}</label>
-        <SearchDropdown :options="options" @onChange="onSelectedDropdownOptionChange" />
+        <SearchDropdown :options="clonedOptions" @onChange="onSelectedDropdownOptionChange" />
         <SearchModal
             :title="title"
             :open="modalOpen"
             @onModalClose="modalOpen = false"
             @onModalConfirm="onModalConfirm">
+            <input type="text" placeholder="Search" v-model="search" style="width:90%"/>
             <SearchModalOptions
-                :options="options"
+                :options="clonedOptions"
                 @onChange="onSelectedOptionChange"
                 name="search"
                 :selected="selected" />
@@ -39,6 +40,8 @@ export default {
             confirmedSelectedValue: null,
             unconfirmedSelectedValue: null,
             modalOpen: false,
+            search: null,
+            clonedOptions: null,
         }
     },
     props: [
@@ -62,11 +65,41 @@ export default {
         },
         onModalConfirm() {
             this.confirmedSelectedValue = this.unconfirmedSelectedValue
-        }
+        },
+        countrySearch(query) {
+            this.clonedOptions =  this.options.filter(o => this.testMatch(o['text'], query))
+        },
+        testMatch: function (str1, str2) {
+            var regex;
+
+            switch (this.position) {
+                case 'start':
+                    regex = '^' + str2 + '.*$';
+                    break;
+                case 'end':
+                    regex = '^.*' + str2 + '$';
+                    break;
+                default:
+                case 'any':
+                    regex = '^.*' + str2 + '.*$';
+                    break;
+            }
+
+            var testObj = new RegExp(regex, 'i');
+
+            return testObj.test(str1);
+        },
     },
     watch: {
         confirmedSelectedValue(val) {
             this.$emit('input', val)
+        },
+        search(val) {
+            this.countrySearch(val)
+            console.log('the val', val)
+        },
+        options(options) {
+            this.clonedOptions = options
         }
     },
     mounted() {
