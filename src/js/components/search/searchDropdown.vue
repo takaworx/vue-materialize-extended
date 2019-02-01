@@ -67,6 +67,9 @@ export default {
     },
     options(options) {
         this.clonedOptions = options
+    },
+    clonedOptions(options) {
+      this.dropdown.recalculateDimensions()
     }
   }
 }
