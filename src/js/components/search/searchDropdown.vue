@@ -24,6 +24,13 @@ export default {
         this.dropdown = M.Dropdown.init(triggerElement, { container: document.getElementById('search_dropdown'), closeOnClick: false })
     }
   },
+  updated() {
+    if(!this.isMobile) {
+        const triggerElement = document.getElementById('triggerbox')
+        triggerElement.dataset.target = 'dropdown1'
+        this.dropdown = M.Dropdown.init(triggerElement, { container: document.getElementById('search_dropdown'), closeOnClick: false })
+    }
+  },
   methods: {
     onOptionClick(option) {
       this.selectedOption = option.value
