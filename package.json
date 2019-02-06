@@ -34,6 +34,6 @@
   "dependencies": {
     "autosize": "^4.0.2",
     "lodash": "^4.17.11",
-    "materialize-extended": "file:~/sites/unified/materialize-extended"
+    "materialize-extended": "git+https://github.com/takaworx/materialize-extended.git#v0.1.4"
   }
 }
