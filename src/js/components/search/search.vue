@@ -1,12 +1,12 @@
 <template>
     <div class="input-field box dark">
-        <div id="triggerbox" class="input-field-select" @click="onClick">
+        <div id="triggerbox" ref="triggerbox" class="input-field-select" @click="onClick">
             <img v-if="confirmedSelectedValue && options && options.find(o => o.value == confirmedSelectedValue)" :src="options.find(o => o.value == confirmedSelectedValue).flag" class="selected-flag" />
             {{ ((options && options.find(o => o.value == confirmedSelectedValue)) && options.find(o => o.value == confirmedSelectedValue).text) 
             || label }}
         </div>
         <label for="triggerbox" class="search-label active">{{ label }}</label>
-        <div id="search_dropdown"><SearchDropdown :options="clonedOptions" @onChange="onSelectedDropdownOptionChange" /></div>
+        <div id="search_dropdown" ref="search_dropdown"><SearchDropdown :options="options" @onChange="onSelectedDropdownOptionChange" /></div>
         <SearchModal
             :title="title"
             :open="modalOpen"
@@ -104,6 +104,7 @@ export default {
     },
     mounted() {
         this.confirmedSelectedValue = this.selected
+        this.clonedOptions = this.options
     }
 }
 </script>

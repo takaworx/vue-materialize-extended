@@ -1,5 +1,5 @@
 <template>
-  <div id="searchmodal" class="modal bottom-sheet input-field-select-modal">
+  <div id="searchmodal" ref="searchmodal" class="modal bottom-sheet input-field-select-modal">
     <div class="modal-content">
       <div class="modal-header">
         {{ title }}
@@ -26,7 +26,7 @@ export default {
       }
   },
   mounted() {
-    this.modal = M.Modal.init(document.getElementById('searchmodal'), { dismissible: false })
+    this.modal = M.Modal.init(this.$refs.searchmodal, { dismissible: false })
   },
   watch: {
     open(newval, oldval) {
@@ -47,43 +47,7 @@ export default {
     modalConfirm() {
       this.$emit('onModalConfirm', true)
       this.modalClose()
-    },
-    countrySearch(query) {
-        var vm = this;
-
-        return new Promise(function (resolve, reject) {
-            var results = _.filter(vm.countries, function (o) {
-                return vm.testMatch(o['name'], query) || vm.testMatch(o['callingCodes'][0], query);
-            });
-
-            if (results !== null) {
-                resolve(results);
-            } else {
-                reject(results);
-            }
-        });
-
-    },
-    testMatch: function (str1, str2) {
-        var regex;
-
-        switch (this.position) {
-            case 'start':
-                regex = '^' + str2 + '.*$';
-                break;
-            case 'end':
-                regex = '^.*' + str2 + '$';
-                break;
-            default:
-            case 'any':
-                regex = '^.*' + str2 + '.*$';
-                break;
-        }
-
-        var testObj = new RegExp(regex, 'i');
-
-        return testObj.test(str1);
-    },
+    }
   }
 }
 </script>

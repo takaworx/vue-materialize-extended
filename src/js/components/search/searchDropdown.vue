@@ -19,16 +19,10 @@ export default {
   mixins: [UseragentMixin],
   mounted() {
     if(!this.isMobile) {
-        const triggerElement = document.getElementById('triggerbox')
+        const triggerElement = this.$parent.$refs.triggerbox
         triggerElement.dataset.target = 'dropdown1'
-        this.dropdown = M.Dropdown.init(triggerElement, { container: document.getElementById('search_dropdown'), closeOnClick: false })
-    }
-  },
-  updated() {
-    if(!this.isMobile) {
-        const triggerElement = document.getElementById('triggerbox')
-        triggerElement.dataset.target = 'dropdown1'
-        this.dropdown = M.Dropdown.init(triggerElement, { container: document.getElementById('search_dropdown'), closeOnClick: false })
+        this.dropdown = M.Dropdown.init(triggerElement, { container: this.$parent.$refs.search_dropdown, closeOnClick: false })
+        this.clonedOptions = this.options
     }
   },
   methods: {
@@ -76,7 +70,7 @@ export default {
         this.clonedOptions = options
     },
     clonedOptions(options) {
-      this.dropdown.recalculateDimensions()
+      this.dropdown && this.dropdown.recalculateDimensions()
     }
   }
 }
