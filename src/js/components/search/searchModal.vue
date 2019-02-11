@@ -51,3 +51,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.modal-content {
+  position: inherit;
+}
+</style>

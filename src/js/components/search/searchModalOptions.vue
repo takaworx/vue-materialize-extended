@@ -46,4 +46,10 @@ export default {
   width: 10%;
   margin-right: 4px;
 }
+.input-field-select-options {
+  height: -webkit-calc(100vh - 104px);
+  height: -moz-calc(100vh - 104px);
+  height: calc(100vh - 104px);
+  overflow-y: auto;
+}
 </style>
