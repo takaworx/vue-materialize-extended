@@ -1,6 +1,6 @@
 <template>
   <ul id='dropdown1' class='dropdown-content'>
-      <li><input type="text" placeholder="Search" v-model="search"/></li>
+      <li style="padding: 5px!important"><input type="text" ref="search_dropdown_input" placeholder="Search" v-model="search"/></li>
       <li v-for="(option, key) in clonedOptions" :key="key" @click.prevent="onOptionClick(option)">
           <a href="#!"><img :src="option.flag" class="selected-flag" /> {{ option.text }}</a>
       </li>
@@ -21,11 +21,14 @@ export default {
     if(!this.isMobile) {
         const triggerElement = this.$parent.$refs.triggerbox
         triggerElement.dataset.target = 'dropdown1'
-        this.dropdown = M.Dropdown.init(triggerElement, { container: this.$parent.$refs.search_dropdown, closeOnClick: false })
+        this.dropdown = M.Dropdown.init(triggerElement, { container: this.$parent.$refs.search_dropdown, closeOnClick: false, coverTrigger: false, onOpenEnd: this.onOpenEnd })
         this.clonedOptions = this.options
     }
   },
   methods: {
+    onOpenEnd() {
+      this.$refs.search_dropdown_input.focus()
+    },
     onOptionClick(option) {
       this.selectedOption = option.value
       this.closeDropdown()
@@ -86,5 +89,8 @@ export default {
   vertical-align: middle;
   width: 33%;
   margin-right: 4px;
+}
+.dropdown-content {
+  top: 100% !important;
 }
 </style>
