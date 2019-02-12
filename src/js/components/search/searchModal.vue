@@ -32,6 +32,7 @@ export default {
     open(newval, oldval) {
       if (newval) {
         this.modal.open()
+        this.$parent.$refs.search_modal_input.focus()
       }
 
       if (!newval) {

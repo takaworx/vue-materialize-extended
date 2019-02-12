@@ -12,7 +12,7 @@
             :open="modalOpen"
             @onModalClose="modalOpen = false"
             @onModalConfirm="onModalConfirm">
-            <input type="text" placeholder="Search" v-model="search" style="width:90%"/>
+            <input type="text" placeholder="Search" v-model="search" style="width:90%" ref="search_modal_input" />
             <SearchModalOptions
                 :options="clonedOptions"
                 @onChange="onSelectedOptionChange"
