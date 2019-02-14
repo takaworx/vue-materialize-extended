@@ -10,7 +10,7 @@
         <SearchModal
             :title="title"
             :open="modalOpen"
-            @onModalClose="modalOpen = false"
+            @onModalClose="closeModal"
             @onModalConfirm="onModalConfirm">
             <input type="text" placeholder="Search" v-model="search" style="width:90%" ref="search_modal_input" />
             <SearchModalOptions
@@ -52,6 +52,10 @@ export default {
         'title'
     ],
     methods: {
+        closeModal() {
+            this.modalOpen = false
+            this.search = null
+        },
         onClick() {
             if(this.isMobile) {
                 this.modalOpen = !this.modalOpen
