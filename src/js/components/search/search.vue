@@ -54,7 +54,7 @@ export default {
     methods: {
         closeModal() {
             this.modalOpen = false
-            this.search = null
+            this.search = ''
         },
         onClick() {
             if(this.isMobile) {
@@ -100,7 +100,6 @@ export default {
         },
         search(val) {
             this.countrySearch(val)
-            console.log('the val', val)
         },
         options(options) {
             this.clonedOptions = options
