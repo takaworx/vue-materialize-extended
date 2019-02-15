@@ -29,6 +29,11 @@ export default {
   watch: {
     selectedOption() {
       this.$emit('onChange', this.selectedOption)
+    },
+    options(options) {
+      if(options.length > 0) {
+        this.selectedOption = options[0].value
+      }
     }
   }
 }
