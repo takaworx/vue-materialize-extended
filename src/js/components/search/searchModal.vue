@@ -1,6 +1,6 @@
 <template>
   <div id="searchmodal" ref="searchmodal" class="modal bottom-sheet input-field-select-modal">
-    <div class="modal-content">
+    <div class="modal-content full-width">
       <div class="modal-header">
         {{ title }}
         <a class="modal-header-action confirm"
@@ -56,5 +56,8 @@ export default {
 <style scoped>
 .modal-content {
   position: inherit;
+}
+.full-width {
+  width: 100%;
 }
 </style>
