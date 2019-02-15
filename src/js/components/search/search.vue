@@ -1,5 +1,5 @@
 <template>
-    <div class="input-field box dark">
+    <div class="input-field box dark height-64">
         <div id="triggerbox" ref="triggerbox" class="input-field-select" @click="onClick">
             <img v-if="confirmedSelectedValue && options && options.find(o => o.value == confirmedSelectedValue)" :src="options.find(o => o.value == confirmedSelectedValue).flag" class="selected-flag" />
             {{ ((options && options.find(o => o.value == confirmedSelectedValue)) && options.find(o => o.value == confirmedSelectedValue).text) 
@@ -126,5 +126,8 @@ export default {
   vertical-align: middle;
   width: 33%;
   margin-right: 4px;
+}
+.height-64 {
+    height: 64px;
 }
 </style>
