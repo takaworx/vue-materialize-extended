@@ -92,6 +92,6 @@ export default {
 }
 .dropdown-content {
   top: 100% !important;
-  height: 600px !important;
+  max-height: calc(100vh - 350px) !important;
 }
 </style>
