@@ -1,8 +1,12 @@
 <template>
   <ul id='dropdown1' class='dropdown-content'>
-      <li style="padding: 5px!important"><input type="text" ref="search_dropdown_input" placeholder="Search" v-model="search"/></li>
-      <li v-for="(option, key) in clonedOptions" :key="key" @click.prevent="onOptionClick(option)">
-          <a href="#!"><img :src="option.flag" class="selected-flag" /> {{ option.text }}</a>
+      <li class="searchcontainer" style="padding: 5px!important"><input type="text" ref="search_dropdown_input" placeholder="Search" v-model="search"/></li>
+      <li class="optionslist" style="max-height: calc(100vh - 400px) !important;overflow-y:scroll">
+        <ul>
+          <li v-for="(option, key) in clonedOptions" :key="key" @click.prevent="onOptionClick(option)">
+            <a href="#!"><img :src="option.flag" class="selected-flag" /> {{ option.text }}</a>
+          </li>
+        </ul>
       </li>
   </ul>
 </template>
@@ -79,6 +83,9 @@ export default {
 }
 </script>
 <style scoped>
+.optionslist:hover, .searchcontainer:hover {
+  background: #FFF;
+}
 .align-left {
   text-align: left;
 }
