@@ -1,7 +1,7 @@
 <template>
-  <ul id='dropdown1' class='dropdown-content'>
+  <ul id='dropdown1' class='dropdown-content' style="max-height: calc(100vh - 400px)!important;overflow-y:unset">
       <li class="searchcontainer" style="padding: 5px!important"><input type="text" ref="search_dropdown_input" placeholder="Search" v-model="search"/></li>
-      <li class="optionslist" style="max-height: calc(100vh - 400px) !important;overflow-y:scroll">
+      <li class="optionslist" style="max-height: calc(100vh - 474px)!important;overflow-y:scroll">
         <ul>
           <li v-for="(option, key) in clonedOptions" :key="key" @click.prevent="onOptionClick(option)">
             <a href="#!"><img :src="option.flag" class="selected-flag" /> {{ option.text }}</a>
