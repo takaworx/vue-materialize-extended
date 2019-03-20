@@ -124,8 +124,12 @@ export default {
   font-size: 16px;
   display: inline-block;
   vertical-align: middle;
-  width: 33%;
   margin-right: 4px;
+}
+@media (min-width: 400px) {
+    .selected-flag {
+        width: 15%;
+    }
 }
 .height-64 {
     height: 64px;

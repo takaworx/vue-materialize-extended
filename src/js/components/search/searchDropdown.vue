@@ -97,6 +97,11 @@ export default {
   width: 33%;
   margin-right: 4px;
 }
+@media (min-width: 400px) {
+    .selected-flag {
+        width: 15%;
+    }
+}
 .dropdown-content {
   top: 100% !important;
   max-height: calc(100vh - 350px) !important;
